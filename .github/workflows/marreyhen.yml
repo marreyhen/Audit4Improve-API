@@ -1,0 +1,18 @@
+name: Demostrador para Acciones GitHub
+on: 
+  workflow_dispatch:
+  issues:
+    types: [opened]
+  project_column:
+    types: [moved]
+jobs:
+  Accion_nueva:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: mkdir -p path/to/artifact
+    - run: echo hello > path/to/artifact/world.txt
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: path/to/artifact/world.txt
